@@ -1,0 +1,44 @@
+se considera un joc activ de wordle
+daca suntem la primul cuvant se sugereaza un cuvant random cu probabilitate maxima (top 50 variante)
+altfel
+se analizeaza configuratia anterioara:
+pentru literele gri se vor elimina cuvintele ce le contin
+pentru literele verzi prioritizam configuratiile in care aceste litere se afla pe pozitii comune cu posibilele solutii
+pentru literele galbene:
+existenta unei litere galbene nu garanteaza frecventa = 1 deci va trebui tratat acest caz
+se vor prioritiza cuvintele care nu au litera galbena pe pozitia cuvantului incercat
+in cazul in care exista mai multe litere galbene procesul se concentreaza pe continutul concomitent al literelor galbene dar pe pozitii diferite
+
+cautarea cuvintelor:
+evident vrem cuvintele cu un scor cat mai mare pentru ca sunt cuvintele cele mai comune
+
+ce concluzii caut:
+procentul de accuracy
+testcase urile unde esueaza:
+
+1.
+tries
+actor
+party
+
+{Suggestion - tries with a score of 47.19
+Enter result: 11000
+Candidate: actor with a score of 41.84
+Enter result: 10101
+Candidate: party with a score of 36.53
+Enter result: 01210
+Traceback (most recent call last):
+  File "D:\aaWorkspace\Wordle AI\main.py", line 132, in <module>
+    solve()
+  File "D:\aaWorkspace\Wordle AI\main.py", line 107, in solve
+    deepSearch(gray, yellow, green)
+  File "D:\aaWorkspace\Wordle AI\main.py", line 65, in deepSearch
+    print(f"Candidate: {words[0]} with a score of {scores[0]}")
+                        ~~~~~^^^
+IndexError: list index out of range}
+
+
+valori de baza
+0 - litera inexistenta
+1 - litera existenta dar pe alta pozitie
+2 - litera corecta
